@@ -56,9 +56,8 @@ public class GridMap : MonoBehaviour
         for (int x = 0; x < _grid.GetLength(0) + 1; x++)
             for (int z = 0; z < _grid.GetLength(1) + 1; z++)
             {
-                Debug.DrawLine(GetWorldPOsition(0, z), GetWorldPOsition(x, z), Color.green, 1000f);
-                Debug.DrawLine(GetWorldPOsition(x, 0), GetWorldPOsition(x, z), Color.green, 1000f);
-                Debug.Log(x + " " + z);
+                Debug.DrawLine(GetWorldPOsition(0, z), GetWorldPOsition(x, z), Color.green, 100f);
+                Debug.DrawLine(GetWorldPOsition(x, 0), GetWorldPOsition(x, z), Color.green, 100f);
             }
     }
 
