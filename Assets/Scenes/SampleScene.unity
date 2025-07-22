@@ -153,6 +153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 633304738}
+  - {fileID: 723168278}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &504450800
@@ -209,10 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6bf793ae51b820444bb23e8ad0093a6d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 723168278}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bf793ae51b820444bb23e8ad0093a6d, type: 3}
       insertIndex: -1
@@ -290,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _missele: {fileID: 482093354387001563, guid: 99ed5f3560f34184a9c11f4b67fcb9ed, type: 3}
   _attackTime: 10
-  _misseleSTartPosition: {x: 0, y: 0, z: 0}
+  _misseleSTartPosition: {fileID: 723168278}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,11 +408,11 @@ Transform:
   m_GameObject: {fileID: 723168277}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 5.22, z: -2.99}
+  m_LocalPosition: {x: 5.9, y: 0.22, z: -0.2945423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 633304738}
+  m_Father: {fileID: 413989671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:

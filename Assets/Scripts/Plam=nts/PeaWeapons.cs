@@ -21,7 +21,8 @@ public class PeaWeapons : MonoBehaviour
     private void Shoot()
     {
         Missele missele = Instantiate(_missele);
-        missele.transform.position = _misseleSTartPosition.position;
+        missele.Init(_misseleSTartPosition);
+        missele.Move();
     }
 
     private IEnumerator Shoting()
