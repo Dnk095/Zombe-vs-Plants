@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-internal class Missele : MonoBehaviour
+public class Missele : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
