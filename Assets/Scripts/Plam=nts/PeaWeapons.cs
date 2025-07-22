@@ -22,7 +22,6 @@ public class PeaWeapons : MonoBehaviour
     {
         Missele missele = Instantiate(_missele);
         missele.transform.position = _misseleSTartPosition.position;
-        _missele.transform.Translate(0, 0, 10);
     }
 
     private IEnumerator Shoting()
