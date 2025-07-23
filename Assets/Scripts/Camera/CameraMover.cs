@@ -27,7 +27,7 @@ public class CameraMover : MonoBehaviour
         Vector3 direction = new(0f, -_inputReader.VerticalZoom, 0f);
 
         if (transform.position.y <= _maxZoom && transform.position.y >= _minZoom)
-        {
+        {   
             transform.Translate(_zoomSpeed * Time.deltaTime * direction);
 
             if (transform.position.y > _maxZoom)
