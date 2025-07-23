@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Missele : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
     private Coroutine _coroutine;
+
+    public event Action<Missele> Releasing;
 
     public void Move()
     {
@@ -17,6 +19,11 @@ public class Missele : MonoBehaviour
     {
         transform.rotation = currentPosition.rotation;
         transform.position = currentPosition.position;
+    }
+
+    public void Release()
+    {
+        Releasing?.Invoke(this);
     }
 
     public void Return()

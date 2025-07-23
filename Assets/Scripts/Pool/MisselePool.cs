@@ -26,16 +26,24 @@ public class MisselePool : MonoBehaviour
     private void Release(Missele missele)
     {
         missele.gameObject.SetActive(false);
+        missele.Releasing -= OnRelease;
+    }
+
+    private void OnRelease(Missele missele)
+    {
+        _pool.Release(missele);
     }
 
     private void Spawn(Missele missele)
     {
         missele.gameObject.SetActive(true);
+        missele.Releasing += OnRelease;
     }
 
     private Missele CreateObject()
     {
         Missele missele = Instantiate(_prefab);
+        missele.transform.parent = transform;
         return missele;
     }
 }

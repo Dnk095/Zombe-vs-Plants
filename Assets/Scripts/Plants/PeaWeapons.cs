@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PeaWeapons : MonoBehaviour
 {
-    [SerializeField] private Missele _missele;
+    [SerializeField] private MisselePool _pool;
     [SerializeField] private float _attackTime;
     [SerializeField] private Transform _misseleSTartPosition;
 
@@ -20,7 +20,7 @@ public class PeaWeapons : MonoBehaviour
 
     private void Shoot()
     {
-        Missele missele = Instantiate(_missele);
+        Missele missele = _pool.GetObject();
         missele.Init(_misseleSTartPosition);
         missele.Move();
     }
