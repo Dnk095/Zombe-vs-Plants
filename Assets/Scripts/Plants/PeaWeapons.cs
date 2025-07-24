@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PeaWeapons : MonoBehaviour
+public class PeaWeapons : Plant
 {
     [SerializeField] private MisselePool _pool;
     [SerializeField] private float _attackTime;
