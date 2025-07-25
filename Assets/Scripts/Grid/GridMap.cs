@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,9 +9,11 @@ public class GridMap : MonoBehaviour
     [SerializeField] private float _cellSize;
 
     private Cell[,] _grid;
+    private List<Vector3> _centers;
 
     private void Awake()
     {
+        _centers = new List<Vector3>();
         _grid = new Cell[_width, _length];
         Fill();
     }
@@ -30,20 +33,9 @@ public class GridMap : MonoBehaviour
         }
     }
 
-    public Vector3 GetRandomFreeCellPosition()
+    public List<Vector3> GetCenters()
     {
-        int x = GetRandomNumber(_width);
-        int z = GetRandomNumber(_length);
-
-        while (_grid[x, z].IsBisy == true)
-        {
-            x = GetRandomNumber(_width);
-            z = GetRandomNumber(_length);
-        }
-
-        _grid[x, z].ChangeState();
-
-        return transform.position + new Vector3(x + 0.5f, 0, z + 0.5f) * _cellSize;
+        return new List<Vector3>(_centers);
     }
 
     private int GetRandomNumber(int x)
@@ -68,10 +60,14 @@ public class GridMap : MonoBehaviour
 
     private void Fill()
     {
+        Vector3 center;
+
         for (int i = 0; i < _width; i++)
             for (int j = 0; j < _length; j++)
             {
                 _grid[i, j] = new Cell();
+                center = new Vector3(transform.position.x + (i + 0.5f) * _cellSize, transform.position.y, transform.position.z + (j + 0.5f) * _cellSize);
+                _centers.Add(center);
             }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlantsSpawner : MonoBehaviour
 {
     [SerializeField] private List<UnitButton> _spawnButtons;
+    [SerializeField] private PlantingHandler _planting;
 
     private Plant _currentPLant;
 
@@ -21,6 +22,6 @@ public class PlantsSpawner : MonoBehaviour
 
     private void OnSpawnButtonClick(Plant plant)
     {
-        
+        _planting.GetNearestCenterPOsition();
     }
 }

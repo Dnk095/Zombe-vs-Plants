@@ -15,7 +15,7 @@ public class PeaWeapons : Plant
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(Shoting());
+        //_coroutine = StartCoroutine(Shoting());
     }
 
     private void Shoot()
