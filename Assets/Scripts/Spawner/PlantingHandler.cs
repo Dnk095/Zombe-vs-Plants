@@ -22,7 +22,7 @@ public class PlantingHandler : MonoBehaviour
         _gridCenters = _gridMap.GetCenters();
     }
 
-    public void GetNearestCenterPOsition()
+    public void GetNearestCenterPOsition(Plant plant)
     {
         float minDistance = float.MaxValue;
         float currentDiatnce;
@@ -37,7 +37,8 @@ public class PlantingHandler : MonoBehaviour
                 minDistance = currentDiatnce;
             }
         }
-        StartCoroutine(Drawing());
+
+        StartCoroutine(Drawing(plant));
     }
 
     private Vector3 GetMousePOsition()
@@ -71,14 +72,14 @@ public class PlantingHandler : MonoBehaviour
         return (position - center).magnitude;
     }
 
-    private IEnumerator Drawing()
+    private IEnumerator Drawing(Plant plant)
     {
         WaitForSeconds wait = new(Time.fixedDeltaTime);
-        PeaWeapons weapon = Instantiate(_weapon);
+        Plant plant1 = Instantiate(plant);
 
         while (enabled)
         {
-            weapon.transform.position = GetMousePOsition();
+            plant1.transform.position = GetMousePOsition();
             yield return wait;
         }
     }
