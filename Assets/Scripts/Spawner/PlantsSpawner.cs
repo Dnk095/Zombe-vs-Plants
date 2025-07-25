@@ -22,6 +22,6 @@ public class PlantsSpawner : MonoBehaviour
 
     private void OnSpawnButtonClick(Plant plant)
     {
-        _planting.GetNearestCenterPOsition();
+        _planting.GetNearestCenterPOsition(plant);
     }
 }
