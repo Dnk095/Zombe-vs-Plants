@@ -8,15 +8,15 @@ internal class InputReader : MonoBehaviour
     private const string Vertical = "Vertical";
     private const string Zoom = "Mouse ScrollWheel";
 
-   // private int _mouseButtonSelect = 0;
-   // private int _mouseButtonDeselect = 1;
+    private int MouseButtonDeselect = 1;
+    private int _mouseButtonSelect = 0;
 
     public float VerticalDirection { get; private set; }
     public float HorizontalDirection { get; private set; }
     public float VerticalZoom { get; private set; }
 
-    //public event Action Selecting;
-    // public event Action Deselecting;
+    public event Action Selecting;
+    public event Action Deselecting;
 
     private void Update()
     {
@@ -24,9 +24,12 @@ internal class InputReader : MonoBehaviour
         VerticalDirection = Input.GetAxis(Vertical);
         VerticalZoom = Input.GetAxis(Zoom);
 
-        //if (Input.GetMouseButtonDown(_mouseButtonSelect))
-        // Selecting?.Invoke();
-        // else if (Input.GetMouseButtonDown(_mouseButtonDeselect))
-        // Deselecting?.Invoke();
+
+
+        if (Input.GetMouseButtonDown(_mouseButtonSelect))
+            Selecting?.Invoke();
+
+        if (Input.GetMouseButtonDown(MouseButtonDeselect))
+            Deselecting?.Invoke();
     }
 }
