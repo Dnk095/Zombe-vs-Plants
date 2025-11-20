@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlantingSimulator : MonoBehaviour
 {
-    [SerializeField] private List<UnitButton> _spawnButtons;
+    [SerializeField] private UnitByttonClickHandler _unitHandler;
     [SerializeField] private InputReader _inputReader;
     [SerializeField] private GridMap _gridMap;
     [SerializeField] private Camera _camera;
@@ -14,27 +15,25 @@ public class PlantingSimulator : MonoBehaviour
     private RaycastHit _hit;
     private bool _startSimulating = false;
 
+    public event Action<Vector3> PLanting;
 
     private void FixedUpdate()
     {
         if (_startSimulating)
-            TryGetCellPosition(out Vector3 position);
+            if (TryGetCellPosition(out Vector3 position))
+                PLanting?.Invoke(position);
     }
 
     private void OnEnable()
     {
-        foreach (UnitButton button in _spawnButtons)
-            button.Clicked += OnSpawnButtonClick;
-
+        _unitHandler.UnitButtonClicked += OnSpawnButtonClick;
         _inputReader.Deselecting += StopSimulations;
         _inputReader.Selecting += OnSelectButtonClick;
     }
 
     private void OnDisable()
     {
-        foreach (UnitButton button in _spawnButtons)
-            button.Clicked -= OnSpawnButtonClick;
-
+        _unitHandler.UnitButtonClicked -= OnSpawnButtonClick;
         _inputReader.Deselecting -= StopSimulations;
         _inputReader.Selecting -= OnSelectButtonClick;
     }
@@ -46,7 +45,7 @@ public class PlantingSimulator : MonoBehaviour
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
         position = Vector3.zero;
 
-        if (Physics.Raycast(_ray, out _hit, Mathf.Infinity) && _hit.collider.TryGetComponent(out MonoCell cell))
+        if (Physics.Raycast(_ray, out _hit, Mathf.Infinity) && _hit.collider.TryGetComponent(out MonoCell cell) && cell.IsBisy == false)
         {
             _weapon.gameObject.SetActive(true);
 
@@ -88,7 +87,7 @@ public class PlantingSimulator : MonoBehaviour
     {
         if (_startSimulating == true && _weapon.enabled == true)
         {
-            Debug.Log("plant");
+            PLanting?.Invoke(Vector3.zero);
         }
     }
 }
